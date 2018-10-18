@@ -7,8 +7,6 @@ package dictionary;
 
 import java.util.Iterator;
 
-import dictionary.Dictionary.Entry;
-
 /**
  *
  * @author da851oez
