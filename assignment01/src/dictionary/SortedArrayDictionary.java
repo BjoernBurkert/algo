@@ -20,7 +20,6 @@ public class SortedArrayDictionary<K extends Comparable<? super K>, V> implement
     
     @SuppressWarnings("unchecked")
     public SortedArrayDictionary() {
-        size = 0;
         data = new Entry[DEF_CAPACITY];
     }
     
