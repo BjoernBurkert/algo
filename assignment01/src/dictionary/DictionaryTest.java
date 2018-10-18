@@ -16,9 +16,8 @@ public class DictionaryTest {
 	 * @param args not used.
 	 */
 	public static void main(String[] args)  {
-		
 		testSortedArrayDictionary();
-		testHashDictionary();
+		// testHashDictionary();
 		// testBinaryTreeDictionary();
 	}
 
@@ -29,8 +28,8 @@ public class DictionaryTest {
 	
         
 	private static void testHashDictionary() {
-		Dictionary<String, String> dict = new HashDictionary<>(3);
-		testDict(dict);
+		// Dictionary<String, String> dict = new HashDictionary<>(3);
+		// testDict(dict);
 	}
 	/*
 	private static void testBinaryTreeDictionary() {

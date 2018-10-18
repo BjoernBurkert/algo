@@ -20,17 +20,12 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
     
     public HashDictionary()
     {
-        this.array = new ArrayList<>(DEF_CAPACITY);
+    	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public HashDictionary(int n)
     {
-        this.array = new ArrayList<>(n);
-    }
-    
-    private int hash(int k)
-    {
-        return k % size; 
+    	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
