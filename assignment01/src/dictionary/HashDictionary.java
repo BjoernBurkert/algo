@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package dictionary;
+import dictionary.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -14,16 +17,26 @@ import java.util.Iterator;
 public class HashDictionary<K extends Comparable<? super K>, V> implements Dictionary<K, V> {
 	private static final int DEF_CAPACITY = 31;
     private int size = 0;
-	private LinkedList<Dictionary.Entry<K, V>>[] table;
+	//private LinkedList<Entry<K, V>>[] table;
+    private LinkedList<K>[] table;
 
 	public HashDictionary() {
 		this(DEF_CAPACITY);
 	}
 
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
 	public HashDictionary(int n) {
 		table = new LinkedList[n];
 
+	}*/
+	
+	public HashDictionary(int n) {
+		List<LinkedList<Entry<K,V>>> array = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			array.add(new LinkedList<Entry<K,V>>());
+		}
+		array.toArray();
+		this.size = array.size();
 	}
     
     @SuppressWarnings("unchecked")
@@ -65,8 +78,16 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 	@Override
 	public V search(K key) {
-		if (table[hash(key)] == null) {
+		LinkedList<Dictionary.Entry<K,V>> list = table[hash(key)];
+		if (list == null) {
 			return null;
+		}
+		
+		
+		for ()
+		
+		for(Dictionary.Entry<K, V> e : list) {
+			if(e.key.equals(key)) {return V}
 		}
 		return null;
 	}
