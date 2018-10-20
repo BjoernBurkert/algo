@@ -6,6 +6,8 @@
 package dictionary;
 
 import dictionary.Dictionary;
+import dictionary.Dictionary.Entry;
+
 import java.util.Iterator;
 
 /**
@@ -50,8 +52,18 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 	@Override
 	public Iterator<Entry<K, V>> iterator() {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-																		// Tools | Templates.
+        return new Iterator<Entry<K, V>>() {
+            int currentIndex = 0;
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size() && table[currentIndex] != null;
+            }
+
+            @Override
+            public Entry<K, V> next() {
+                return null;
+            }
+        };
 	}
 
 	@Override
@@ -68,7 +80,6 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 		}
 		for (Dictionary.Entry<K, V> e : list) {
 			if (e.key.equals(key)) {
-				System.out.println(e.value);
 				return e.value;
 			}
 		}

@@ -45,6 +45,19 @@ public final class LinkedList<T> implements Iterable<T> {
 		}
 		p.next = new Node<T>(t_data, null);
 	}
+	
+	public void remove(T t_data) {
+		if (head == null || !contains(t_data)) {
+			return;
+		}
+		Node<T> p = head;
+		for (; p.next != null; p = p.next) {
+			if (p.data == t_data) {
+				
+			}
+		}
+		
+	}
 
 	@Override
 	public String toString() {
