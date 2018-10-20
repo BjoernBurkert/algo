@@ -1,6 +1,8 @@
 package dictionary;
 
-public final class LinkedList<T> {
+import java.util.Iterator;
+
+public final class LinkedList<T> implements Iterable<T> {
 	private class Node<S> {
 		public S data;
 		public Node<S> next;
@@ -57,5 +59,24 @@ public final class LinkedList<T> {
 		}
 		sb.append(p.data.toString());
 		return sb.toString();
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			Node<T> p = head;
+
+			@Override
+			public boolean hasNext() {
+				return p != null;
+			}
+
+			@Override
+			public T next() {
+				T ret = p.data;
+				p = p.next;
+				return ret;
+			}
+		};
 	}
 }

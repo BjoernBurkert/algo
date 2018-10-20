@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package dictionary;
-import dictionary.*;
 
-import java.util.ArrayList;
+import dictionary.Dictionary;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  *
@@ -16,39 +14,20 @@ import java.util.List;
  */
 public class HashDictionary<K extends Comparable<? super K>, V> implements Dictionary<K, V> {
 	private static final int DEF_CAPACITY = 31;
-    private int size = 0;
-	//private LinkedList<Entry<K, V>>[] table;
-    private LinkedList<K>[] table;
+	private LinkedList<Entry<K, V>>[] table;
 
 	public HashDictionary() {
 		this(DEF_CAPACITY);
 	}
 
-    /*@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public HashDictionary(int n) {
 		table = new LinkedList[n];
-
-	}*/
-	
-	public HashDictionary(int n) {
-		List<LinkedList<Entry<K,V>>> array = new ArrayList<>();
-		for (int i = 0; i < n; i++) {
-			array.add(new LinkedList<Entry<K,V>>());
+		for (int i = 0; i < n; ++i) {
+			table[i] = new LinkedList<Entry<K, V>>();
 		}
-		array.toArray();
-		this.size = array.size();
+
 	}
-    
-    @SuppressWarnings("unchecked")
-    private void ensureCapacity(int newCapacity) {
-        if (newCapacity < size)
-        {
-            return;	
-        }
-        LinkedList[] old = table;
-        table = new LinkedList[newCapacity];
-        System.arraycopy(old, 0, table, 0, size);
-    }
 
 	private int hash(K key) {
 		int address = key.hashCode();
@@ -60,8 +39,13 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 	@Override
 	public V insert(K key, V value) {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-		// Tools | Templates.
+		LinkedList<Entry<K, V>> l = table[hash(key)];
+		if (search(key) != null) {
+			return value;
+		} else {
+			l.insert(new Entry<K, V>(key, value));
+			return null;
+		}
 	}
 
 	@Override
@@ -78,16 +62,15 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 	@Override
 	public V search(K key) {
-		LinkedList<Dictionary.Entry<K,V>> list = table[hash(key)];
+		LinkedList<Dictionary.Entry<K, V>> list = table[hash(key)];
 		if (list == null) {
 			return null;
 		}
-		
-		
-		for ()
-		
-		for(Dictionary.Entry<K, V> e : list) {
-			if(e.key.equals(key)) {return V}
+		for (Dictionary.Entry<K, V> e : list) {
+			if (e.key.equals(key)) {
+				System.out.println(e.value);
+				return e.value;
+			}
 		}
 		return null;
 	}
