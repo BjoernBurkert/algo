@@ -56,8 +56,17 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 	@Override
 	public V remove(K key) {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-																		// Tools | Templates.
+		LinkedList<Entry<K, V>> l = table[hash(key)];
+		V value = this.search(key);
+		if (value == null) {
+			return null;
+		}
+		Entry<K, V> e = l.remove(new Entry<>(key, value));
+		System.out.println(e);
+		if (e == null) {
+			return null;
+		}
+		return e.value;
 	}
 
 	@Override
