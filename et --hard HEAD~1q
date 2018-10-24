@@ -1,0 +1,79 @@
+[33mcommit e6128c2b07df8549783e827e026fb12001e712b2[m
+Merge: e024e70 3ec8217
+Author: Daniel Özyurt <daniel.oezyurt@htwg-konstanz.de>
+Date:   Wed Oct 24 15:36:03 2018 +0200
+
+    Merge branch 'bb' into do
+
+[33mcommit 3ec8217307844ffe8c62f214daae85cb7320d327[m
+Author: BjoernBurkert <B.B.00@web.de>
+Date:   Wed Oct 24 12:36:25 2018 +0200
+
+    userinterface not completed
+
+[33mcommit fb60f331de1f1c50a139efef2f70a53f05dff86c[m
+Author: BjoernBurkert <B.B.00@web.de>
+Date:   Tue Oct 23 12:57:30 2018 +0200
+
+    remove method implemented
+
+[33mcommit e024e70ac9f815ec93a571d73a5b5bec608067a4[m
+Author: Daniel Özyurt <daniel.oezyurt@htwg-konstanz.de>
+Date:   Sat Oct 20 20:10:08 2018 +0200
+
+    unfinished changes
+
+[33mcommit fb3b42b36c480e044413f9dd9e427705ee1f861e[m
+Author: Daniel Özyurt <daniel.oezyurt@htwg-konstanz.de>
+Date:   Sat Oct 20 19:27:00 2018 +0200
+
+    fixed iterator
+
+[33mcommit 4ff7d584cd6bc0078ecf0abf08910afa1176e35f[m
+Author: da851oez@fhkn.de <da851oez@fhkn.de>
+Date:   Fri Oct 19 16:37:59 2018 +0200
+
+    unfinished changes
+
+[33mcommit 70d2417032ae219e31c101427ecff2bc46a62d67[m
+Author: da851oez@FHKN.DE <da851oez@FHKN.DE>
+Date:   Thu Oct 18 18:59:33 2018 +0200
+
+    unfinished changes
+
+[33mcommit b4ba3e122864d3fa9a45cd75dace83fe99db0bfd[m
+Author: da851oez@FHKN.DE <da851oez@FHKN.DE>
+Date:   Thu Oct 18 18:48:19 2018 +0200
+
+    unfinished changes
+
+[33mcommit fe7cf0c17de1aee0a6640564b7b55dba8e6df134[m
+Merge: d8a5f62 c7ef664
+Author: da851oez@fhkn.de <da851oez@fhkn.de>
+Date:   Thu Oct 18 16:53:13 2018 +0200
+
+    Merge branch 'do'
+
+[33mcommit c7ef6643c197c903c66213bf9927ae61e189873c[m
+Author: da851oez@fhkn.de <da851oez@fhkn.de>
+Date:   Thu Oct 18 16:52:52 2018 +0200
+
+    list class added
+
+[33mcommit d8a5f62c5966cc31a00cb22879e49358a1e59a79[m
+Author: da851oez@FHKN.DE <da851oez@FHKN.DE>
+Date:   Thu Oct 18 15:02:03 2018 +0200
+
+    branches added
+
+[33mcommit 60b6f6595104e9d084eedcd40c5c2647fca63f61[m
+Author: da851oez@FHKN.DE <da851oez@FHKN.DE>
+Date:   Thu Oct 18 14:54:43 2018 +0200
+
+    fixed ignore file
+
+[33mcommit fdbec3ab37256a6a6e9b1e2698ed823f6611d61d[m
+Author: da851oez@fhkn.de <da851oez@fhkn.de>
+Date:   Thu Oct 18 14:47:40 2018 +0200
+
+    first commit
