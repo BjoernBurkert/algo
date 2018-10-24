@@ -3,6 +3,7 @@
 
 package dictionary;
 
+import java.io.File;
 import java.util.Iterator;
 
 /**
@@ -99,4 +100,6 @@ public interface Dictionary<K,V> extends Iterable<Dictionary.Entry<K,V>> {
 			return retVal;
 		}
 	}
+
+	void read(File file);
 }
