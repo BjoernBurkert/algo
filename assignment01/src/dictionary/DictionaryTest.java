@@ -17,7 +17,11 @@ public class DictionaryTest {
 	 */
 	public static void main(String[] args)  {
 		testSortedArrayDictionary();
-		testHashDictionary();
+		Dictionary<String, String> dict = new HashDictionary<>(3);
+		dict.insert("Your mum!", "Deine Mutter");
+		dict.insert("Your dad!", "Dein Vater!");
+		System.out.println(dict.toString());
+		// testHashDictionary();
 		// testBinaryTreeDictionary();
 	}
 
