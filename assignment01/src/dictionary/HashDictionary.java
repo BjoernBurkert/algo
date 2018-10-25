@@ -55,13 +55,13 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 		// Insert for the case that the list is empty
 		if (table[hashValue] == null) {
 			table[hashValue] = new Node<K, V>(new Entry<K, V>(key, value), null);
-			return value;
+			return null;
 		}
 		// Insert for the case that the list isn't empty
 		if (table[hashValue] != null) {
 			Node<K, V> tmp = table[hashValue];
 			table[hashValue] = new Node<K, V>(new Entry<K, V>(key, value), tmp);
-			return value;
+			return null;
 		}
 		return null;
 	}
@@ -70,6 +70,7 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 	public Iterator<Entry<K, V>> iterator() {
 		return new Iterator<Entry<K, V>>() {
 			int currentIndex = 0;
+			Node<K, V> p = null;
 
 			@Override
 			public boolean hasNext() {
@@ -78,23 +79,57 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 			@Override
 			public Entry<K, V> next() {
-				return null;
+				return table[currentIndex++].data;
 			}
 		};
 	}
 
 	@Override
 	public V remove(K key) {
+		// Check if the entry exists
+		if (search(key) == null) {
+			return null;
+		}
+		// Compute the hash index for the table (array)
+		int hashIndex = hash(key);
+		// Check if the first entry is a match and remove it if it is
+		if (table[hashIndex].data.key.equals(key)) {
+			Node<K, V> bak = table[hashIndex];
+			Node<K, V> tmp = table[hashIndex].next;
+			table[hashIndex] = tmp;
+			return bak.data.value;
+		}
+		// Get the list from the table
+		Node<K, V> n = table[hashIndex];
+		Node<K, V> prev = n;
+		// Find the entry to remove and remove it
+		for (Node<K, V> p = n; p != null; p = p.next) {
+			if (p.data.key.equals(key)) {
+				Node<K, V> bak = p;
+				Node<K, V> tmp = p.next;
+				prev.next = tmp;
+				return bak.data.value;
+			}
+			prev = p;
+		}
 		return null;
 	}
 
 	@Override
 	public V search(K key) {
-		/*
-		 * LinkedList<Dictionary.Entry<K, V>> list = table[hash(key)]; if (list == null)
-		 * { return null; } for (Dictionary.Entry<K, V> e : list) { if
-		 * (e.key.equals(key)) { return e.value; } }
-		 */
+		int hashIndex = hash(key);
+		// Get the linked list
+		Node<K, V> nodes = table[hashIndex];
+		// Check if the list is empty
+		if (nodes == null) {
+			return null;
+		}
+		// Look for the entry
+		for (Node<K, V> p = nodes; p != null; p = p.next) {
+			if (p.data.key.equals(key)) {
+				return p.data.value;
+			}
+		}
 		return null;
 	}
 
