@@ -8,6 +8,7 @@ package dictionary;
 import dictionary.Dictionary.Entry;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -46,10 +47,6 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 	@Override
 	public V insert(K key, V value) {
-		// Check if the element is already there
-		if (search(key) != null) {
-			return value;
-		}
 		// Compute the hash value
 		final int hashValue = hash(key);
 		// Insert for the case that the list is empty
@@ -59,9 +56,10 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 		}
 		// Insert for the case that the list isn't empty
 		if (table[hashValue] != null) {
+			Node<K, V> prev = table[hashValue];
 			Node<K, V> tmp = table[hashValue];
 			table[hashValue] = new Node<K, V>(new Entry<K, V>(key, value), tmp);
-			return null;
+			return prev.data.value;
 		}
 		return null;
 	}
@@ -70,7 +68,7 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 	public Iterator<Entry<K, V>> iterator() {
 		return new Iterator<Entry<K, V>>() {
 			int currentIndex = 0;
-			Node<K, V> p = null;
+			Node<K, V> currentNode = null;
 
 			@Override
 			public boolean hasNext() {
@@ -79,7 +77,21 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 			@Override
 			public Entry<K, V> next() {
-				return table[currentIndex++].data;
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				currentNode = table[currentIndex];
+				Node<K, V> prev = currentNode;
+				// Iterate over list in 1 step
+				if (currentNode != null) {
+					currentNode = currentNode.next;
+				}
+				// Check if the list is ending and move to the next array index if so
+				if (currentNode == null) {
+					++currentIndex;
+				}
+				
+				return prev.data;
 			}
 		};
 	}
