@@ -105,6 +105,7 @@ public class DictionaryTest {
 		dict.insert("fahren", "drive");
 		dict.insert("spielen", "play");
 		dict.insert("planen", "plan");
+		System.out.println(dict);
 		for (Dictionary.Entry<String, String> e : dict) {
 			System.out.println(e.getKey() + ": " + e.getValue() + " search: " + dict.search(e.getKey()));
 		}

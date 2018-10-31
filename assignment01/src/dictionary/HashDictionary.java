@@ -72,7 +72,16 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 
 			@Override
 			public boolean hasNext() {
-				return currentIndex < size() && table[currentIndex] != null;
+				if (currentIndex <= size()) {
+					if (currentNode == null) {
+						currentNode = table[currentIndex];
+						++currentIndex;
+					}
+					if (currentNode != null) {
+						return true;
+					}
+				}
+				return false;
 			}
 
 			@Override
@@ -80,18 +89,9 @@ public class HashDictionary<K extends Comparable<? super K>, V> implements Dicti
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				currentNode = table[currentIndex];
-				Node<K, V> prev = currentNode;
-				// Iterate over list in 1 step
-				if (currentNode != null) {
-					currentNode = currentNode.next;
-				}
-				// Check if the list is ending and move to the next array index if so
-				if (currentNode == null) {
-					++currentIndex;
-				}
-				
-				return prev.data;
+				Node<K, V> prevNode = currentNode;
+				currentNode = currentNode.next;
+				return prevNode.data;
 			}
 		};
 	}
